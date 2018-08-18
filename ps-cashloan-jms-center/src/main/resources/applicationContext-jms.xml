@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--sms配置参数-->
+    <bean id="smsConstants" class="com.adpanshi.cashloan.jms.action.constant.SmsConstants" scope="singleton">
+        <property name="chuanglanUrl" value="${sms_chuanglan_url}"/>
+        <property name="chuanglanAccount" value="${sms_chuanglan_account}"/>
+        <property name="chuanglanPassword" value="${sms_chuanglan_password}"/>
+        <property name="tianyihongUrl" value="${sms_tianyihong_url}"/>
+        <property name="tianyihongAccount" value="${sms_tianyihong_account}"/>
+        <property name="tianyihongPassword" value="${sms_tianyihong_password}"/>
+        <property name="areaCode" value="${sms_area_code}"/>
+        <property name="title" value="${title}"/>
+        <property name="smsQuartzInterval" value="${sms_quartz_interval}"/>
+        <property name="businessSmsSaveUrl" value="${businessSmsSaveUrl}"/>
+    </bean>
+
+
+    <!--notify生产-->
+    <import resource="classpath:/jms-notify-producer.xml"/>
+    <!--notify消费-->
+    <import resource="classpath:/jms-notify-consumer.xml"/>
+    <!--dispatch生产-->
+    <import resource="classpath:/jms-dispatch-producer.xml"/>
+    <!--dispatch消费-->
+    <import resource="classpath:/jms-dispatch-consumer.xml"/>
+
+
+
+
+</beans>
